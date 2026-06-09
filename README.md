@@ -1,51 +1,39 @@
-# HCDT Shift Assistant for UAZ
+# HCDT Shift Assistant для УАЗ
 
-`HCDT Shift Assistant` is a demo implementation of a human-centric digital twin for UAZ assembly-line workers.
-The system is designed for stations with a high share of manual work: final assembly, quality control, and rework.
+`HCDT Shift Assistant` — демо-реализация человеко-центричного цифрового двойника для сотрудников сборочной линии УАЗ. Система разработана для участков с разной долей ручного труда.
 
-## Why this software fits the thesis
+## Почему это ПО подходит для выпускной работы
 
-The application maps directly to the HCDT architecture from the thesis:
+Приложение напрямую соотносится с архитектурой HCDT из выпускной работы:
 
-- `Sense`: builds a digital trace of the operator and workstation events.
-- `Reason`: evaluates cognitive risk and validates the execution path through a regulation automaton.
-- `Act`: generates proactive explainable recommendations instead of simple error messages.
-- `Learn`: updates trust score, growth hints, and the bonus coefficient linked to performance.
+- `Sense`: формирует цифровой след оператора и события рабочего места.
+- `Reason`: оценивает когнитивный риск и проверяет корректность выполнения маршрута через автомат регуляции.
+- `Act`: генерирует проактивные объясняющие рекомендации вместо простых сообщений об ошибке.
+- `Learn`: обновляет доверие (trust), подсказки роста и коэффициент бонуса, связанный с производительностью.
 
-## Product idea for UAZ
+## Идея продукта для УАЗ
 
-The system acts as a shift assistant for a worker on the UAZ plant floor:
+Система выступает помощником по смене для рабочего на площадке УАЗ:
 
-- shows the current operation, equipment context, and next allowed step;
-- checks whether the right production tool is selected for the exact station;
-- estimates fatigue and cognitive risk before a defect happens;
-- explains why a deviation is dangerous and how to correct it on the spot;
-- switches the worker into guided learning mode instead of simply blocking the shift;
-- calculates trust score, bonus coefficient, and projected shift earnings dynamically.
+- показывает текущую операцию, контекст оборудования и следующий разрешённый шаг;
+- проверяет, выбран ли правильный производственный инструмент для конкретного участка;
+- оценивает усталость и когнитивный риск до появления дефекта;
+- объясняет, почему отклонение опасно и как его исправить на месте;
+- переводит рабочего в режим сопровождаемого обучения вместо блокировки смены;
+- динамически рассчитывает trust score, коэффициент бонуса и прогноз заработка за смену.
 
-## Modeled production objects
+## Смоделированные объекты производства
 
-The software now follows the modeled objects from the thesis more closely:
+Программное обеспечение сейчас следует моделируемым объектам из работы:
 
-- welding section;
-- assembly section;
-- paint section;
-- final quality control;
-- logistics subsystem;
-- plant infrastructure as an extendable integration target.
+- участок сварки;
+- участок сборки;
+- участок покраски;
+- финальный контроль качества;
+- подсистема логистики;
+- инфраструктура завода как расширяемая цель интеграций.
 
-## Suggested demo scenario
-
-Example station: door assembly and final quality control.
-
-- Operator enters the shift.
-- MES assigns a task card.
-- SCADA/IIoT sends workstation context.
-- The HCDT core builds the operator's live profile.
-- If the sequence or tool is suspicious, the system warns before the defect.
-- After each cycle, the reputation and motivation metrics are recalculated.
-
-## Project structure
+## Структура проекта
 
 ```text
 hcdt_vkr/
@@ -77,7 +65,7 @@ hcdt_vkr/
     └── test_hcdt.py
 ```
 
-## Quick start
+## Быстрый старт
 
 ```bash
 python -m venv .venv
@@ -86,20 +74,4 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
 
-Open `http://127.0.0.1:8000`.
-
-## HCDT requirements covered
-
-- Operator + equipment as a single control object.
-- Real-time digital trace.
-- Cognitive risk index.
-- Executable regulation automaton.
-- Explainable support before the mistake.
-- Trust score and bonus coefficient.
-- Integration stubs for `MES`, `ERP`, `SCADA`, `OPC UA`, and `MQTT`.
-
-## Thesis-ready positioning
-
-This software can be described in the VKR as:
-
-`A decision-support platform for assembly-line workers at UAZ based on the HCDT architecture, focused on proactive defect prevention on manual stations.`
+Откройте http://127.0.0.1:8000.
