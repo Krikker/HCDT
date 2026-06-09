@@ -1,0 +1,74 @@
+[
+  {
+    "id": "st-weld-body",
+    "name": "Сварка кузова и контроль геометрии шва",
+    "department": "Сварочный цех",
+    "segment": "welding",
+    "line": "Сварочный цех",
+    "equipment": ["сварочный робот", "позиционер кузова", "контрольный шаблон"],
+    "allowed_tools": ["welding-console", "seam-gauge", "thermal-scanner", "voice-terminal"],
+    "process_steps": ["identify-body", "load-welding-program", "verify-clamps", "run-weld-cycle", "measure-seam"],
+    "risk_zone": "high",
+    "quality_cost_rub": 38000
+  },
+  {
+    "id": "st-engine",
+    "name": "Сборка двигателя и контроль момента затяжки",
+    "department": "Моторный участок",
+    "segment": "assembly",
+    "line": "Моторный участок",
+    "equipment": ["сборочный стенд двигателя", "подъемник узла", "датчик момента"],
+    "allowed_tools": ["torque-wrench", "angle-gauge", "scanner", "voice-terminal"],
+    "process_steps": ["identify-engine", "mount-block", "tighten-head-bolts", "check-torque-curve", "close-operation"],
+    "risk_zone": "high",
+    "quality_cost_rub": 47000
+  },
+  {
+    "id": "st-paint",
+    "name": "Подготовка к покраске и контроль параметров камеры",
+    "department": "Окрасочный комплекс",
+    "segment": "paint",
+    "line": "Окрасочный комплекс",
+    "equipment": ["окрасочная камера", "распылительный пост", "датчик влажности"],
+    "allowed_tools": ["paint-gun", "thickness-meter", "tablet", "voice-terminal"],
+    "process_steps": ["identify-body", "prepare-surface", "set-paint-mode", "spray-layer", "measure-thickness"],
+    "risk_zone": "medium",
+    "quality_cost_rub": 29000
+  },
+  {
+    "id": "st-door",
+    "name": "Финальная сборка двери и проверка крепежа",
+    "department": "Финальная сборка",
+    "segment": "assembly",
+    "line": "Финальная сборка",
+    "equipment": ["сборочный конвейер", "позиционер двери", "контрольный терминал"],
+    "allowed_tools": ["torque-wrench", "scanner", "voice-terminal", "hinge-aligner"],
+    "process_steps": ["identify-vin", "mount-door", "tighten-bolts", "scan-checkpoint", "visual-inspection"],
+    "risk_zone": "high",
+    "quality_cost_rub": 18000
+  },
+  {
+    "id": "st-qc",
+    "name": "Финальный контроль качества",
+    "department": "ОТК",
+    "segment": "quality",
+    "line": "ОТК",
+    "equipment": ["контрольный пост", "световой тоннель", "фотофиксация"],
+    "allowed_tools": ["scanner", "tablet", "voice-terminal", "gap-gauge", "camera-rig"],
+    "process_steps": ["identify-vin", "check-gaps", "check-torque-mark", "photo-fixation", "release-car"],
+    "risk_zone": "medium",
+    "quality_cost_rub": 25000
+  },
+  {
+    "id": "st-log-kit",
+    "name": "Комплектация и подача наборов деталей на линию",
+    "department": "Внутризаводская логистика",
+    "segment": "logistics",
+    "line": "Внутризаводская логистика",
+    "equipment": ["комплектовочная тележка", "сканер ячеек", "сортировочный стеллаж"],
+    "allowed_tools": ["scanner", "tablet", "pick-to-light", "voice-terminal"],
+    "process_steps": ["read-route-task", "scan-cell", "pick-parts", "verify-kit", "deliver-kit"],
+    "risk_zone": "medium",
+    "quality_cost_rub": 14000
+  }
+]

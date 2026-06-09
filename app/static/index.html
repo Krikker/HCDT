@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HCDT Shift Assistant</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="topbar">
+        <div class="title-block">
+          <p class="eyebrow">HCDT UAZ</p>
+          <h1>Панель рабочего</h1>
+          <p class="lead">
+            Система показывает маршрут операций, текущий шаг, нужный инструмент, журнал инцидентов
+            и влияние действий на оплату смены.
+          </p>
+        </div>
+        <div class="control-panel">
+          <label>
+            Оператор
+            <select id="operator-select"></select>
+          </label>
+          <label>
+            Участок
+            <select id="station-select"></select>
+          </label>
+        </div>
+      </section>
+
+      <section id="access-banner" class="access-banner hidden"></section>
+
+      <section class="status-strip">
+        <article class="mini-card clickable" id="risk-card">
+          <span class="mini-label">Риск</span>
+          <strong id="risk-level" class="mini-value">-</strong>
+          <span id="risk-index" class="mini-meta">CRI: -</span>
+        </article>
+        <article class="mini-card">
+          <span class="mini-label">Текущий шаг</span>
+          <strong id="current-step" class="mini-value">-</strong>
+          <span id="next-step" class="mini-meta">Следующий: -</span>
+        </article>
+        <article class="mini-card">
+          <span class="mini-label">Инструмент</span>
+          <strong id="recommended-tool" class="mini-value">-</strong>
+          <span id="recheck-time" class="mini-meta">Повторная проверка: -</span>
+        </article>
+        <article class="mini-card">
+          <span class="mini-label">Оплата</span>
+          <strong id="projected-pay" class="mini-value">-</strong>
+          <span id="bonus-pay" class="mini-meta">События смены: -</span>
+        </article>
+      </section>
+
+      <section class="main-layout">
+        <article class="card workflow-card">
+          <div class="card-head">
+            <div>
+              <h2>Маршрут операции</h2>
+              <p id="workflow-station" class="muted">Выберите участок</p>
+            </div>
+            <div class="progress-box">
+              <span>Готовность</span>
+              <strong id="workflow-progress">0%</strong>
+            </div>
+          </div>
+          <div id="workflow-steps" class="workflow-steps"></div>
+        </article>
+
+        <article class="card action-card accent">
+          <h2>Что делать сейчас</h2>
+          <p id="summary" class="metric">Ожидание расчета</p>
+          <p id="explanation" class="muted">
+            Выберите оператора и участок, чтобы построить подсказку для рабочего.
+          </p>
+          <div class="tool-panel">
+            <label>
+              Подтверждение инструмента
+              <select id="tool-select"></select>
+            </label>
+            <button id="apply-tool-btn" type="button">Подтвердить инструмент</button>
+          </div>
+          <div class="tool-status">
+            <strong id="tool-hint">Подсказка по инструменту появится здесь.</strong>
+            <span id="progress-hint">Прогресс шага появится здесь.</span>
+          </div>
+          <button id="complete-step-btn" class="complete-btn" type="button">Шаг выполнен</button>
+          <button id="finish-shift-btn" class="finish-btn" type="button">Завершить смену</button>
+
+          <div class="incident-panel">
+            <label>
+              Зафиксировать инцидент
+              <select id="incident-select"></select>
+            </label>
+            <button id="apply-incident-btn" type="button">Записать событие</button>
+          </div>
+
+          <div class="action-columns">
+            <div>
+              <p class="section-label">Действия</p>
+              <ul id="actions"></ul>
+            </div>
+            <div>
+              <p class="section-label">Как выполнить правильно</p>
+              <ul id="teaching-points"></ul>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="compact-grid">
+        <article class="card">
+          <h2>Участок</h2>
+          <div id="sense"></div>
+        </article>
+
+        <article class="card">
+          <h2>Обучение</h2>
+          <div id="learn"></div>
+        </article>
+
+        <article class="card">
+          <h2>Оплата смены</h2>
+          <div id="payroll"></div>
+        </article>
+      </section>
+
+      <section class="compact-grid compact-grid-bottom">
+        <article class="card event-card wide-card">
+          <div class="card-head">
+            <div>
+              <h2>История смены</h2>
+              <p class="muted">Подтвержденные инциденты, попытки нарушений и восстановительные действия.</p>
+            </div>
+          </div>
+          <div id="event-log" class="event-log"></div>
+        </article>
+      </section>
+    </main>
+
+    <div id="modal" class="modal-backdrop">
+      <div class="modal-card">
+        <div class="modal-head">
+          <h2 id="modal-title">Подробности</h2>
+          <button id="modal-close" class="modal-close" type="button">Закрыть</button>
+        </div>
+        <div id="modal-body"></div>
+      </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
